@@ -1,0 +1,8 @@
+{
+  "title": "Paper title",
+  "summary": "Brief summary of the paper's content",
+  "problem": "What problem the paper addresses",
+  "solution": "How the paper solves the problem",
+  "limitations": "Limitations or unresolved issues",
+  "key_contributions": "Main contributions of the paper"
+}

@@ -1,0 +1,3 @@
+Please conduct a deep analysis of the following academic paper:
+
+{paper_text}

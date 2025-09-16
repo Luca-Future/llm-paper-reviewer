@@ -1,0 +1,3 @@
+Please analyze the following academic paper:
+
+{paper_text}
