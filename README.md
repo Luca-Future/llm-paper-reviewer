@@ -27,7 +27,7 @@ A modern, modular academic paper analysis tool with a clean architecture using A
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
+git clone git@github.com:Luca-Future/llm-paper-reviewer.git
 cd paper-reviewer-ai
 ```
 

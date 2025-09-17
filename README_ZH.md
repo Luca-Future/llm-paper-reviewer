@@ -27,7 +27,7 @@
 
 1. 克隆此仓库：
 ```bash
-git clone <repository-url>
+git clone git@github.com:Luca-Future/llm-paper-reviewer.git
 cd paper-reviewer-ai
 ```
 
