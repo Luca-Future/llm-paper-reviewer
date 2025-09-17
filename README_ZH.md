@@ -1,6 +1,6 @@
 # 论文审阅 AI
 
-一款智能学术论文分析工具，使用AI自动总结和评审研究论文。支持PDF和文本文件，具备多语言分析功能。
+一款现代化的模块化学术论文分析工具，采用清晰的分层架构，使用AI自动总结和评审研究论文。支持PDF和文本文件，具备多语言分析功能。
 
 ## 功能特性
 
@@ -11,6 +11,9 @@
 - **⚙️ 可配置提示词**：多种分析提示词版本满足不同需求
 - **🖼️ 图片提取**：可选的PDF图片提取功能
 - **📝 智能文本处理**：自动识别并移除页眉页脚，提升分析质量
+- **🏗️ 现代架构**：清晰的分层设计与依赖注入
+- **💻 CLI接口**：功能完整的命令行界面，支持批量处理
+- **🔧 可扩展设计**：基于插件系统的功能扩展
 
 ## 安装说明
 
@@ -41,52 +44,65 @@ cp .env.example .env
 4. 编辑`.env`文件并添加您的OpenAI API密钥：
 ```bash
 OPENAI_API_KEY=your-openai-api-key-here
-PROMPT_VERSION=EN  # 选项：EN, ZH, EN_2_0, ZH_2_0
+PROMPT_VERSION=EN_2_0  # 选项：EN, ZH, EN_2_0, ZH_2_0
+AI_PROVIDER=openai
+```
+
+5. 验证安装：
+```bash
+uv run python -m interfaces.cli.main info
 ```
 
 ## 快速开始
 
-### 分析论文
+### 使用CLI界面
 
 ```bash
-# 分析PDF文件（自动转换为markdown）
-python paper_analyzer.py paper.pdf
-
-# 分析文本/markdown文件
-python paper_analyzer.py paper.md
+# 分析单个论文
+uv run python -m interfaces.cli.main analyze paper.pdf
 
 # 保存分析结果到JSON文件
-python paper_analyzer.py paper.pdf -o analysis.json
+uv run python -m interfaces.cli.main analyze paper.pdf --output analysis.json
 
-# 使用中文分析
-python paper_analyzer.py paper.pdf --prompt-version ZH_2_0
+# 使用增强分析
+uv run python -m interfaces.cli.main analyze paper.pdf --prompt-version EN_2_0
+
+# 获取系统信息
+uv run python -m interfaces.cli.main info
+
+# 测试AI服务连接
+uv run python -m interfaces.cli.main test-connection
 ```
 
-### PDF转Markdown
+### 批量处理
 
 ```bash
-# PDF转markdown（不提取图片）
-python pdf_parser.py paper.pdf output.md --no-images
+# 分析目录中的所有论文
+uv run python -m interfaces.cli.main batch-analyze ./papers --output-dir ./results
 
-# PDF转markdown（提取图片）
-python pdf_parser.py paper.pdf output.md
+# 控制并发数
+uv run python -m interfaces.cli.main batch-analyze ./papers --concurrent 2
 ```
-
 ## 使用示例
 
 ### 基础分析
 ```bash
-python paper_analyzer.py research_paper.pdf
+uv run python -m interfaces.cli.main analyze research_paper.pdf --verbose
 ```
 
 ### 高级分析（使用增强提示词）
 ```bash
-python paper_analyzer.py research_paper.pdf --prompt-version EN_2_0 -o detailed_analysis.json
+uv run python -m interfaces.cli.main analyze research_paper.pdf --prompt-version EN_2_0 --output detailed_analysis.json
 ```
 
 ### 中文分析
 ```bash
-python paper_analyzer.py research_paper.pdf --prompt-version ZH_2_0
+uv run python -m interfaces.cli.main analyze research_paper.pdf --prompt-version ZH_2_0
+```
+
+### 批量分析
+```bash
+uv run python -m interfaces.cli.main batch-analyze ./papers --output-dir ./results --concurrent 3
 ```
 
 ## 输出格式
@@ -124,14 +140,23 @@ python paper_analyzer.py research_paper.pdf --prompt-version ZH_2_0
 ### 命令行选项
 
 ```bash
-python paper_analyzer.py <input_file> [OPTIONS]
+uv run python -m interfaces.cli.main [COMMAND] [OPTIONS]
+
+命令：
+  analyze          分析单个论文
+  batch-analyze    分析目录中的多个论文
+  test-connection  测试AI服务连接
+  info             显示系统信息
 
 选项：
-  --output, -o        JSON结果输出文件路径
-  --model             OpenAI模型名称（默认：gpt-4o）
-  --temperature       响应温度（0-1，默认：0.1）
-  --max-length        最大分析字符数（默认：8000）
-  --prompt-version    提示词版本（EN, ZH, EN_2_0, ZH_2_0）
+  --input           输入文件/目录路径
+  --output, -o      输出文件/目录路径
+  --model           AI模型名称
+  --prompt-version  提示词版本（EN, ZH, EN_2_0, ZH_2_0）
+  --max-length      最大分析字符数
+  --concurrent      并发分析数量（批量）
+  --extract-images  从PDF提取图片
+  --verbose, -v     详细输出
 ```
 
 ## 文件支持

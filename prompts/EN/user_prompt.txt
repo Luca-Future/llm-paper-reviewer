@@ -1,3 +1,12 @@
 Please analyze the following academic paper:
 
 {paper_text}
+
+**IMPORTANT ANALYSIS INSTRUCTIONS:**
+- You must provide meaningful analysis for ALL required fields
+- Never leave any field empty or use "Not provided"
+- If explicit information is not available, make reasonable inferences based on the paper content
+- Be proactive in identifying implicit contributions and limitations
+- Focus on specific technical details rather than generic statements
+
+Use the analyze_paper function to provide your comprehensive analysis with all required fields properly filled.

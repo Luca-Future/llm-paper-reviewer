@@ -1,9 +1,9 @@
 {
-  "title": "论文标题",
-  "summary": "论文内容的全面概述",
-  "problem": "研究问题与挑战",
-  "solution": "方法论与技术路线",
-  "limitations": "技术局限与未解决问题",
-  "key_contributions": "主要学术贡献",
-  "research_significance": "研究意义与影响"
+  "title": "Paper title",
+  "summary": "Brief summary of the paper's content",
+  "problem": "What problem the paper addresses",
+  "solution": "How the paper solves the problem",
+  "limitations": "Limitations or unresolved issues",
+  "key_contributions": "Main contributions of the paper",
+  "research_significance": "Research significance and impact"
 }

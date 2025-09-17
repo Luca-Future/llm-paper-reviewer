@@ -1,3 +1,13 @@
 Please conduct a deep analysis of the following academic paper:
 
 {paper_text}
+
+**CRITICAL ANALYSIS REQUIREMENTS:**
+- You MUST provide detailed analysis for ALL required fields
+- Never leave any field empty or use "Not provided" - this is unacceptable
+- When explicit information is not available, make reasonable inferences based on the paper content
+- Be proactive in identifying implicit contributions and limitations
+- Focus on specific technical details rather than generic statements
+- Synthesize information from different sections to build comprehensive understanding
+
+Use the analyze_paper function to provide your thorough analysis with all required fields completed with meaningful content.
